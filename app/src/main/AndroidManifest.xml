@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="david.angulo.gitHubSearcher">
+    package="david.angulo.githubSearcher">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="david.angulo.gitHubSearcher.application.App"
+        android:name="david.angulo.githubSearcher.application.App"
         android:allowBackup="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="david.angulo.gitHubSearcher.modules.ui.home.activity.HomeActivity"
+            android:name="david.angulo.githubSearcher.modules.ui.home.activity.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="homeActivityViewModel"
-            type="david.angulo.gitHubSearcher.modules.ui.home.activity.HomeActivityViewModel" />
+            type="david.angulo.githubSearcher.modules.ui.home.activity.HomeActivityViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

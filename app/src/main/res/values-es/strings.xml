@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GitHubSearcher</string>
-    <string name="search_info">Search repositories</string>
-    <string name="no_description">No description</string>
+    <string name="search_info">Buscar repositorios</string>
+    <string name="no_description">Sin descripción</string>
     <string name="repositories_not_found">No se han encontrado repositorios</string>
-    <string name="server_error">Server error</string>
+    <string name="server_error">Error interno</string>
 </resources>

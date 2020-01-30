@@ -7,7 +7,7 @@
 
         <variable
             name="homeFragmentViewModel"
-            type="david.angulo.gitHubSearcher.modules.ui.home.HomeFragmentViewModel" />
+            type="david.angulo.githubSearcher.modules.ui.home.HomeFragmentViewModel" />
     </data>
 
     <LinearLayout
