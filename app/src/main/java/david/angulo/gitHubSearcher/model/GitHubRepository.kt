@@ -18,5 +18,8 @@ class GitHubRepository(
     var description: String? = null,
     @SerializedName("owner")
     @Expose
-    var owner: Owner? = null
+    var owner: Owner? = null,
+    @SerializedName("language")
+    @Expose
+    var language: String? = null
 )

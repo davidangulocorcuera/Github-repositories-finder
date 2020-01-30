@@ -65,6 +65,18 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
         baseActivity?.showSnackbar(view, text, context,color)
     }
 
+    fun hideKeyboard(context: Context?, view: View?) {
+        baseActivity?.hideKeyboard(context, view)
+    }
+
+    fun enableScreen(){
+        baseActivity?.enableScreen()
+    }
+
+    fun disableScreen(){
+        baseActivity?.disableScreen()
+    }
+
     private val baseActivity: BaseActivity<*, *>?
         get() {
             return activity as? BaseActivity<*, *>

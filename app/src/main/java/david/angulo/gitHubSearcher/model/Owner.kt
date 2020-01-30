@@ -10,4 +10,5 @@ class Owner(
     @SerializedName("avatar_url")
     @Expose
     var avatar: String? = null
+
 )

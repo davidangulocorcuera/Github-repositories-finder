@@ -59,14 +59,14 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
-    //rx
+    // Rx
     implementation "io.reactivex.rxjava2:rxjava:2.2.7"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
 
 
-    //dagger
+    // Dagger
     implementation "com.google.dagger:dagger-android:2.21"
     kapt "com.google.dagger:dagger-compiler:2.21"
 
@@ -78,8 +78,11 @@ dependencies {
     // Anko
     implementation "org.jetbrains.anko:anko-commons:0.10.8"
 
-    //glide
+    // Glide
     implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+    // Lotties
+    implementation 'com.airbnb.android:lottie:3.3.1'
 
 
 }

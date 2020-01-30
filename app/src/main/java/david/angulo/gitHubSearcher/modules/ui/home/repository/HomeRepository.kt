@@ -30,12 +30,12 @@ class HomeRepository {
         }
     }
 
-    fun getAllPublicRepositories(): Flowable<ArrayList<GitHubRepository>> {
-        return apiService.getAllPublicRepositories(1)
+    fun getAllPublicRepositories(count: Int): Flowable<ArrayList<GitHubRepository>> {
+        return apiService.getAllPublicRepositories(count)
     }
 
-    fun searchRepositories(text: String): Flowable<SearchResponse> {
-        return apiService.searchRepositories(text)
+    fun searchRepositories(text: String, page: Int): Flowable<SearchResponse> {
+        return apiService.searchRepositories(text, page)
     }
 
 }

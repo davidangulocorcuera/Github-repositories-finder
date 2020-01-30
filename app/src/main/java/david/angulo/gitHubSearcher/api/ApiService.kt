@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
@@ -20,10 +21,9 @@ interface ApiService {
     fun getAllPublicRepositories(@Query("since") count: Int): Flowable<ArrayList<GitHubRepository>>
 
     @GET("search/repositories")
-    fun searchRepositories(@Query("q") topic: String): Flowable<SearchResponse>
+    fun searchRepositories(@Query("q") topic: String,@Query("page") page: Int): Flowable<SearchResponse>
 
     companion object {
-
         private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
@@ -36,7 +36,6 @@ interface ApiService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()
-
             return retrofit.create(ApiService::class.java)
         }
     }

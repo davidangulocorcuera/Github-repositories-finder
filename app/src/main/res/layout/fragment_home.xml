@@ -13,19 +13,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/colorGreySuperLight"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
         tools:context=".modules.ui.home.HomeFragment">
 
         <include
             android:id="@+id/homeToolbar"
-            layout="@layout/toolbar"
-            />
+            layout="@layout/toolbar" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRepositories"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieLoading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_repository" />
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/git_cat_animation" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llNotFoundContainer"
+            android:gravity="center"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivPageNotFound"
+                android:text="@string/repositories_not_found"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/swrRepositoriesContainer"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRepositories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_repository" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </LinearLayout>
+
+
 </layout>

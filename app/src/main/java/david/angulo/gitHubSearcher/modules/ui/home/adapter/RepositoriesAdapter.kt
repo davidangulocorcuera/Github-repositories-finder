@@ -16,8 +16,12 @@ import kotlinx.android.synthetic.main.item_repository.view.*
  * © Class created by David Angulo
  * */
 
-class RepositoriesAdapter(users: ArrayList<GitHubRepository>, val context: Context?, var onRepositoryItemClick: (GitHubRepository) -> Unit) :
-    BaseRecyclerAdapter<GitHubRepository, RepositoriesAdapter.ViewHolder>(){
+class RepositoriesAdapter(
+    users: ArrayList<GitHubRepository>,
+    val context: Context?,
+    var onRepositoryItemClick: (GitHubRepository) -> Unit
+) :
+    BaseRecyclerAdapter<GitHubRepository, RepositoriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -46,6 +50,11 @@ class RepositoriesAdapter(users: ArrayList<GitHubRepository>, val context: Conte
 
         private fun setValues() {
             itemView.tvRepositoryName.text = current.fullName.toString()
+            if (current.description.isNullOrEmpty()) itemView.tvRepositoryLanguage.text =
+                context?.getString(
+                    R.string.no_description
+                )
+            else itemView.tvRepositoryLanguage.text = current.description.toString()
 
             context?.let {
                 Glide.with(it)

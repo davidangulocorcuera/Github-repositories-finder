@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Clickable"
+    android:layout_margin="@dimen/space_super_small"
+    app:cardCornerRadius="@dimen/space_small"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:elevation="@dimen/space_small"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:elevation="@dimen/space_small">
 
-    <ImageView
-        android:id="@+id/ivUserImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="@dimen/space_medium"
-        />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvRepositoryName"
-        android:textColor="@color/colorBlack"
-        tools:text="Example"
-        android:padding="@dimen/space_medium"
-/>
-</LinearLayout>
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/ivUserImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/space_medium"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvRepositoryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:maxLines="1"
+                android:layout_marginStart="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_small"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Example" />
+            <TextView
+                android:id="@+id/tvRepositoryLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:layout_marginStart="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_small"
+                android:fontFamily="@font/roboto_light"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                tools:text="Example" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

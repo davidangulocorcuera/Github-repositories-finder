@@ -1,8 +1,11 @@
 package david.angulo.gitHubSearcher.modules.base
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +47,9 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
     abstract fun initViewModel(viewModel: VM)
 
     fun showProgress(show: Boolean, hasShade: Boolean) {
+        if (show) disableScreen()
+        else enableScreen()
+
         val progress = findViewById<ProgressBar>(R.id.progress)
         val progressContainer = findViewById<View>(R.id.progressContainer)
         progressContainer?.setVisible(show && hasShade)
@@ -59,5 +65,26 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
                 snackbar.show()
             }
         }
+    }
+
+    fun enableScreen() {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    fun disableScreen() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
+    }
+
+    fun hideKeyboard(context: Context?, view: View?) {
+        context?.let {
+            val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            view?.let {
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+        }
+
     }
 }

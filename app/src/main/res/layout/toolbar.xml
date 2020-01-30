@@ -4,7 +4,7 @@
     android:id="@+id/llTagWriterContainer"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     android:elevation="@dimen/space_super_small"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
