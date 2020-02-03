@@ -4,7 +4,12 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+/**
+ * © Class created by David Angulo
+ * */
+
 class GithubRepository(
+
     @SerializedName("id")
     @Expose
     var id: Int? = null,
@@ -23,4 +28,5 @@ class GithubRepository(
     @SerializedName("language")
     @Expose
     var language: String? = null
-): Serializable
+
+) : Serializable

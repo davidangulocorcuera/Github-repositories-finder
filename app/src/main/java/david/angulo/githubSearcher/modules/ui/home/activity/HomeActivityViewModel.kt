@@ -4,6 +4,10 @@ import android.app.Application
 import david.angulo.githubSearcher.application.App
 import david.angulo.githubSearcher.modules.base.BaseViewModel
 
+/**
+ * © Class created by David Angulo
+ * */
+
 class HomeActivityViewModel (app: Application) : BaseViewModel(app) {
 
     init {

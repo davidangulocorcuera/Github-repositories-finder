@@ -15,6 +15,9 @@ import androidx.lifecycle.ViewModelProviders
 import david.angulo.githubSearcher.R
 import david.angulo.githubSearcher.modules.utils.setVisible
 
+/**
+ * © Class created by David Angulo
+ * */
 
 abstract class BaseDialogFragment<VM : BaseViewModel, DB : ViewDataBinding>(private val mViewModelClass: Class<VM>) :
     DialogFragment() {

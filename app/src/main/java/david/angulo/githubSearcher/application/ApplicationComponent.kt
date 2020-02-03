@@ -6,6 +6,9 @@ import dagger.Component
 import david.angulo.githubSearcher.modules.base.BaseViewModel
 import javax.inject.Singleton
 
+/**
+ * © Class created by David Angulo
+ * */
 
 @Singleton
 @Component(modules = [ApplicationModule::class])

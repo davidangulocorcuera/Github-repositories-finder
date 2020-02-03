@@ -11,6 +11,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * © Class created by David Angulo
+ * */
+
 class HomeFragmentViewModel(var app: Application) : BaseViewModel(app) {
     init {
         (app as? App)?.component?.inject(this)

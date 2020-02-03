@@ -2,6 +2,11 @@ package david.angulo.githubSearcher.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
+/**
+ * © Class created by David Angulo
+ * */
 
 class SearchResponse(
 
@@ -16,4 +21,4 @@ class SearchResponse(
     @SerializedName("items")
     @Expose
     var items: ArrayList<GithubRepository>? = null
-)
+) : Serializable
