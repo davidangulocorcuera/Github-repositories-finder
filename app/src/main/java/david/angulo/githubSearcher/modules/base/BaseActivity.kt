@@ -17,6 +17,9 @@ import com.google.android.material.snackbar.Snackbar
 import david.angulo.githubSearcher.R
 import david.angulo.githubSearcher.modules.utils.setVisible
 
+/**
+ * © Class created by David Angulo
+ * */
 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private val mViewModelClass: Class<VM>) :
     AppCompatActivity() {

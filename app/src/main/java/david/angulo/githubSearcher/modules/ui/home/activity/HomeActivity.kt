@@ -6,6 +6,10 @@ import david.angulo.githubSearcher.databinding.ActivityHomeBinding
 import david.angulo.githubSearcher.modules.base.BaseActivity
 import david.angulo.githubSearcher.modules.ui.home.HomeFragment
 
+/**
+ * © Class created by David Angulo
+ * */
+
 class HomeActivity : BaseActivity<HomeActivityViewModel, ActivityHomeBinding>(
     HomeActivityViewModel::class.java
 ) {

@@ -8,6 +8,10 @@ import david.angulo.githubSearcher.model.GithubRepository
 import david.angulo.githubSearcher.modules.base.BaseViewModel
 import david.angulo.githubSearcher.modules.utils.ConstantsPlatform
 
+/**
+ * © Class created by David Angulo
+ * */
+
 class RepositoryDetailViewModel(var app: Application) : BaseViewModel(app) {
     init {
         (app as? App)?.component?.inject(this)

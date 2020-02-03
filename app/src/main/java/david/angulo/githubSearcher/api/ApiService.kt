@@ -12,6 +12,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
+/**
+ * © Class created by David Angulo
+ * */
 
 interface ApiService {
 

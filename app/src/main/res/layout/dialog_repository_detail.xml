@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,7 +19,8 @@
             android:id="@+id/ivUserImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_margin="@dimen/space_medium" />
+            android:layout_margin="@dimen/space_medium"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tvName"
@@ -26,20 +28,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/space_medium"
             android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
             android:padding="@dimen/space_medium"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:text="Example" />
 
-        <TextView
-            android:id="@+id/tvUrl"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnOpenInBrowser"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_big"
+            android:background="@drawable/round_button"
             android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
             android:padding="@dimen/space_medium"
-            android:textColor="@color/colorPrimaryLight" />
-
-
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:text="@string/mostrar_en_el_navegador"
+            />
     </LinearLayout>
 
 </layout>

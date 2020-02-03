@@ -1,10 +1,8 @@
 package david.angulo.githubSearcher.modules.ui.home.dialog
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.View
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -13,6 +11,10 @@ import david.angulo.githubSearcher.databinding.DialogRepositoryDetailBinding
 import david.angulo.githubSearcher.model.GithubRepository
 import david.angulo.githubSearcher.modules.base.BaseDialogFragment
 import kotlinx.android.synthetic.main.dialog_repository_detail.*
+
+/**
+ * © Class created by David Angulo
+ * */
 
 class RepositoryDetailDialog :
     BaseDialogFragment<RepositoryDetailViewModel, DialogRepositoryDetailBinding>(
@@ -37,6 +39,7 @@ class RepositoryDetailDialog :
                 is RepositoryDetailState.DialogCreatedState -> {
                     mRepository = state.repository
                     setView()
+                    onUrlClicked()
                 }
             }
         })
@@ -50,6 +53,12 @@ class RepositoryDetailDialog :
                 .into(dialog?.ivUserImage!!)
         }
         dialog?.tvName?.text = mRepository.fullName
-        dialog?.tvUrl?.text = mRepository.url
+    }
+
+    private fun onUrlClicked(){
+        dialog?.btnOpenInBrowser?.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mRepository.url))
+            startActivity(browserIntent)
+        }
     }
 }

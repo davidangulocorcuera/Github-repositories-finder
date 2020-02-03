@@ -2,6 +2,7 @@ package david.angulo.githubSearcher.modules.ui.home
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
@@ -12,12 +13,18 @@ import david.angulo.githubSearcher.R
 import david.angulo.githubSearcher.databinding.FragmentHomeBinding
 import david.angulo.githubSearcher.model.GithubRepository
 import david.angulo.githubSearcher.modules.base.BaseFragment
+import david.angulo.githubSearcher.modules.ui.home.activity.HomeActivityViewModel
 import david.angulo.githubSearcher.modules.ui.home.adapter.PaginationListener
 import david.angulo.githubSearcher.modules.ui.home.adapter.RepositoriesAdapter
 import david.angulo.githubSearcher.modules.ui.home.dialog.RepositoryDetailDialog
 import david.angulo.githubSearcher.modules.utils.ConstantsPlatform
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+
+/**
+ * © Class created by David Angulo
+ * */
 
 
 class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
@@ -35,9 +42,8 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
 
     private var isSearchCall = false
     private var isGetAllRepositoriesCall = false
-    private var isNewSearch = false
+    private var isNewSearch = true
     private var isLoading = false
-    private val isLastPage = false
 
 
     override fun getLayoutRes(): Int {
@@ -50,11 +56,10 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
         initRepositoriesAdapter()
         initRepositoriesList()
         setEtSearchKeyListener()
-        onTextEmpty()
-        isNewSearch = true
         getAllPublicRepositories()
         setRecyclerListener()
     }
+
 
     private fun initHomeStatesObserver() {
         viewModel.mHomeState.observe(this, Observer { state ->
@@ -69,14 +74,19 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
                     llNotFoundContainer.visibility = View.VISIBLE
                 }
             }
-            isScreenEnabled(true)
-            isAnimationVisible(false)
-            homeToolbar.etSearcher.clearFocus()
-            hideKeyboard(context, view)
-            swrRepositoriesContainer.isRefreshing = false
+           onResponseAction()
         })
     }
 
+    private fun onResponseAction(){
+        isLoading = false
+        if (isSearchCall && !isLoading) currentPage++
+        isScreenEnabled(true)
+        isAnimationVisible(false)
+        homeToolbar.etSearcher.clearFocus()
+        hideKeyboard(context, view)
+        swrRepositoriesContainer.isRefreshing = false
+    }
 
 
     private fun isScreenEnabled(enable: Boolean) {
@@ -89,7 +99,6 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
      **/
 
     private fun addRepositories(repositories: ArrayList<GithubRepository>) {
-
         if (isNewSearch) {
             mGithubRepositories.clear()
         }
@@ -133,6 +142,10 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
     }
 
     private fun searchRepositories() {
+        if(etSearcher.text.isEmpty()){
+            getAllPublicRepositories()
+            return
+        }
         if(isNewSearch) currentPage = 1
         llNotFoundContainer.visibility = View.GONE
         isScreenEnabled(false)
@@ -178,11 +191,9 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
             override fun loadMoreItems() {
                 isNewSearch = false
                 isLoading = true
-                if (!isGetAllRepositoriesCall) currentPage++
                 getRepositoriesOnRefresh()
 
             }
-            override fun isLastPage(): Boolean = isLastPage
             override fun isLoading(): Boolean = isLoading
         })
     }
@@ -202,22 +213,8 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(
         }
     }
 
-
     /**
-     * If user delete the text from the search , the app will load all public repositories.
-     * */
-
-    private fun onTextEmpty() {
-        homeToolbar.etSearcher.addTextChangedListener {
-            if (homeToolbar.etSearcher.text.toString().isEmpty()) {
-                getAllPublicRepositories()
-            }
-        }
-    }
-
-
-    /**
-     * If last call was a search app will refresh searching else will refresh showing all public repositories.
+     * If last call was a search the app will refresh searching, else will refresh showing all public repositories.
      * */
 
     private fun getRepositoriesOnRefresh() {

@@ -3,14 +3,13 @@ package david.angulo.githubSearcher.modules.ui.home.adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * © Class created by David Angulo
+ * */
 
 abstract class PaginationListener(
     private val linearLayoutManager: LinearLayoutManager
 ) : RecyclerView.OnScrollListener() {
-
-    companion object {
-        const val START_PAGE = 1
-    }
 
 
     override
@@ -21,14 +20,13 @@ abstract class PaginationListener(
         val lastVisibleItemPosition: Int = linearLayoutManager.findLastVisibleItemPosition()
 
 
-        if (lastVisibleItemPosition == totalItemCount - 1) {
+        if (lastVisibleItemPosition == totalItemCount - 1 && !isLoading()) {
             loadMoreItems()
         }
 
     }
 
     abstract fun loadMoreItems()
-    abstract fun isLastPage(): Boolean
     abstract fun isLoading(): Boolean
 
 

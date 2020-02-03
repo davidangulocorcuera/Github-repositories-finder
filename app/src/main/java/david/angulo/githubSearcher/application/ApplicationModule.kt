@@ -7,6 +7,10 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * © Class created by David Angulo
+ * */
+
 @Module
 class ApplicationModule(var app: App) {
 

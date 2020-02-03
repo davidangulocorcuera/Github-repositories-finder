@@ -1,5 +1,8 @@
 package david.angulo.githubSearcher.application
 
+/**
+ * © Class created by David Angulo
+ * */
 
 class App : android.app.Application() {
 
